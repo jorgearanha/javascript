@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section>
+        <div id="container">
+            <div id="div_altura">
+                <label for="altura" id="lb_altura">Altura :</label>
+                <input type="text" name="altura" id="altura">
+            </div>
+            <div id="div_peso">
+                <label for="peso" id="lb_peso">Peso :</label>
+                <input type="text" name="peso" id="peso">
+            </div>
+            <div id="btn_calcula">
+                <button id="btn_IMC" name="btn_IMC">Calcule</button>
+            </div>
+            <div id="div_result">
+                
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        let btn_IMC = document.getElementById("btn_IMC");
+        let peso = document.getElementById("peso");
+        let altura = document.getElementById("altura");
+        let div_result = document.getElementById("div_result")
+
+        btn_IMC.addEventListener('click', () => {
+            var imc = parseFloat(peso.value) / (parseFloat(altura.value) * parseFloat(altura.value));
+            div_result.innerHTML = '<p> Seu IMC é: ' + imc + ' </p>';    
+            // alert('Seu IMC é: ' + imc.toFixed(2));
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+#container {
+    display: flex;
+    flex-wrap: row;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    width: 600px;
+    flex-direction: column;
+}
+
+button {
+    font-size: 25px;
+}
+
+div {
+    margin: 5px;
+}
+
+input{
+    font-size: 30px;
+}
+
+#div_altura, #div_peso {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+#btn_calcula {
+    display: flex;
+    justify-content: flex-end;
+}
