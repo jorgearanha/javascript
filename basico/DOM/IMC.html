@@ -36,6 +36,7 @@
         let peso = document.getElementById("peso");
         let altura = document.getElementById("altura");
         let div_result = document.getElementById("div_result")
+        div_result.style.color = 'blue';
 
         btn_IMC.addEventListener('click', () => {
             var imc = parseFloat(peso.value) / (parseFloat(altura.value) * parseFloat(altura.value));
