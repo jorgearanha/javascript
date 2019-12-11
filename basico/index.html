@@ -15,18 +15,14 @@
         funcName();
 
         function fatorial(fator) {
-            console.log(fatorial( fator - 1 ) + ' ' + (fator - 1))
-            if (fator == 2) {
-                return 2;
-            } else if (fator == 1) {
+            if (fator == 1) {
                 return 1;
-            } else if (fator == 0) {
-                return 0;
+            } else {
+                return fator * fatorial(fator - 1)
             }
-            return fator * fatorial( fator - 1 )
         }
 
-        console.log(fatorial(10));
+        console.log(fatorial(3));
     </script>
 </body>
 </html>
