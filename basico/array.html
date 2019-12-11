@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
         let arr = ['Jorge0', 'Jorge1', 'Jorge2', 'Jorge3'];
 
-        arr[0] = 'Jorge0';
-        arr[1] = 'Jorge1';
-        arr[2] = 'Jorge2';
-        arr[3] = 'Jorge3';
+        // for (let index = 0; index < arr.length; index++) {
+        //     const element = arr[index];
+        //     console.log(element);
+        // }
+        arr.push('Jorge4')
+        arr.unshift('Jorge-1')
+
+        arr.forEach((val, id) => {
+            console.log(val + " " + id);
+
+        });
+
+        arr.pop();  
+        arr.shift();
+        // arr[0] = 'Jorge0';
+        // arr[1] = 'Jorge1';
+        // arr[2] = 'Jorge2';
+        // arr[3] = 'Jorge3';
 
     </script>
 </body>
+
 </html>

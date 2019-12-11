@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Meu parágrafo</p>
+    <input type="text" name="email" id="email">
+
+    <script>
+
+        document.body.onload = function() {
+            if (navigator.onLine){
+                console.log('OnLine');
+            }
+        };
+
+        // window -- variável global da janela
+        // document.body
+        let inp = document.getElementById('email');
+        let p = document.getElementsByTagName('p');
+
+        console.log(inp);
+        console.log(p[0]);
+        
+        let btn = document.createElement('button');
+        let atr = document.createAttribute('class');
+        let text = document.createTextNode('Buton custom')
+
+        atr.value = 'Customize value';
+        btn.setAttributeNode(atr);
+        btn.textContent = 'JAVASCRIPTO BUTTONNN!!!';
+
+        document.body.appendChild(btn);
+
+        document.body.removeChild(document.getElementById('email'));
+    </script>
+</body>
+</html>
