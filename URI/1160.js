@@ -12,7 +12,7 @@ function obj(str) {
 function crescPop(instancia) {
     let anos = 0;
 
-    while (instancia.pa < instancia.pb && anos <= 100) {
+    while (instancia.pa <= instancia.pb && anos <= 100) {
         instancia.pa = parseInt(instancia.pa + instancia.pa * (instancia.g1/100));
         instancia.pb = parseInt(instancia.pb + instancia.pb * (instancia.g2/100));
         anos++;
@@ -30,8 +30,8 @@ for (let i = 1; i <= num; i++) {
     let anos = crescPop(instancia);
 
     if (anos > 100) {
-        console.log('Mais de 1 seculo. ');
+        console.log('Mais de 1 seculo.');
     } else {
-        console.log(parseInt(anos) + ' anos. ');
+        console.log(parseInt(anos) + ' anos.');
     }
 }
