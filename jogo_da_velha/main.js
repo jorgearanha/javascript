@@ -16,11 +16,12 @@ function clickTabuleiro(tabuleiro){
     for (let i = 0; i < tabuleiro.length; i++) {
         for (let j = 0; j < tabuleiro[i].length; j++){
             tabuleiro[i][j].addEventListener('click', () => {
-                let elem = document.createElement('h1');
-                elem.innerHTML = 'X';
+                let elem = document.createElement('img');
+                elem.src = 'images/Chocottone.png';
+                elem.className = 'ttones';
+                console.log(elem);
+                
                 tabuleiro[i][j].appendChild(elem);
-                
-                
             });
         }
     }
