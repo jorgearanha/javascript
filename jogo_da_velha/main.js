@@ -31,17 +31,22 @@ function clickTabuleiro(tabuleiro) {
         for (let j = 0; j < tabuleiro[i].length; j++) {
             // Cria a arrow function referenciada em evento para poder ser removida após o primeiro click.
             let evento = () => {
-                // Executa o evento esperado ao clicar no tabuleiro.
-                let clone = ttone.elem.cloneNode(true);
-                tabuleiro[i][j].elem.appendChild(clone);
-                tabuleiro[i][j].ttone = ttone.nome;
-                // Impede o evento de ocorrer novamente após o primeiro click.
-                tabuleiro[i][j].elem.removeEventListener('click', evento);
-                let vencedor = verificaVencedor(tabuleiro);
-                if (vencedor) alert('O vencedor foi: ' + vencedor);
-                if (verificaVelha(tabuleiro)) alert('Deu velha');
-                // Altera o ttone a cada rodada.
-                alteraTtone();
+                if (!verificaVencedor(tabuleiro)) {
+                    // Executa o evento esperado ao clicar no tabuleiro.
+                    let clone = ttone.elem.cloneNode(true);
+                    tabuleiro[i][j].elem.appendChild(clone);
+                    tabuleiro[i][j].ttone = ttone.nome;
+                    // Impede o evento de ocorrer novamente após o primeiro click.
+                    tabuleiro[i][j].elem.removeEventListener('click', evento);
+
+                    let vencedor = verificaVencedor(tabuleiro);
+                    if (vencedor) {
+                        setTimeout(() => {alert('O vencedor foi: ' + vencedor)}, 500);
+                        return () => { };
+                    }else if (verificaVelha(tabuleiro)) alert('Deu velha');
+                    // Altera o ttone a cada rodada.
+                    alteraTtone();
+                }
             }
             tabuleiro[i][j].elem.addEventListener('click', evento);
         }
@@ -51,12 +56,12 @@ function clickTabuleiro(tabuleiro) {
 function verificaVencedor(tab) {
     for (let i = 0; i < 3; i++) {
         if (
-            (((tab[i][0].ttone && tab[i][1].ttone) && tab[i][2].ttone) && ((tab[i][0].ttone ==  tab[i][1].ttone) && (tab[i][0].ttone == tab[i][2].ttone))) ||
-            (((tab[0][i].ttone && tab[1][i].ttone) && tab[2][i].ttone) && ((tab[0][i].ttone ==  tab[1][i].ttone) && (tab[0][i].ttone == tab[2][i].ttone)))
+            (((tab[i][0].ttone && tab[i][1].ttone) && tab[i][2].ttone) && ((tab[i][0].ttone == tab[i][1].ttone) && (tab[i][0].ttone == tab[i][2].ttone))) ||
+            (((tab[0][i].ttone && tab[1][i].ttone) && tab[2][i].ttone) && ((tab[0][i].ttone == tab[1][i].ttone) && (tab[0][i].ttone == tab[2][i].ttone)))
         ) return tab[i][i].ttone;
-        else if(
-        (((tab[0][0].ttone && tab[1][1].ttone) && tab[2][2].ttone) && ((tab[0][0].ttone ==  tab[1][1].ttone) && (tab[0][0].ttone == tab[2][2].ttone))) ||
-        (((tab[2][0].ttone && tab[1][1].ttone) && tab[0][2].ttone) && ((tab[2][0].ttone ==  tab[1][1].ttone) && (tab[2][0].ttone == tab[0][2].ttone)))
+        else if (
+            (((tab[0][0].ttone && tab[1][1].ttone) && tab[2][2].ttone) && ((tab[0][0].ttone == tab[1][1].ttone) && (tab[0][0].ttone == tab[2][2].ttone))) ||
+            (((tab[2][0].ttone && tab[1][1].ttone) && tab[0][2].ttone) && ((tab[2][0].ttone == tab[1][1].ttone) && (tab[2][0].ttone == tab[0][2].ttone)))
         ) return tab[1][1].ttone;
     }
 }
@@ -74,6 +79,14 @@ function verificaVelha(tab) {
 function alteraTtone() {
     if (ttone == panettone) ttone = chocottone;
     else ttone = panettone;
+}
+
+function removeEventos(tab, evento) {
+    for (let linha = 0; linha < tab.length; linha++) {
+        for (let coluna = 0; coluna < array.length; coluna++) {
+            tab[linha][coluna].elem.removeEventListener('click', evento);
+        }
+    }
 }
 
 function montaLinha(coluna) {
