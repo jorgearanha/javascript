@@ -42,7 +42,9 @@ function clickTabuleiro(tabuleiro) {
                     let vencedor = verificaVencedor(tabuleiro);
                     if (vencedor) {
                         exibeVencedor(vencedor);
-                    } else if (verificaVelha(tabuleiro)) alert('Deu velha');
+                    } else if (verificaVelha(tabuleiro)) {
+                        exibeVelha();
+                    }
                     // Altera o ttone a cada rodada.
                     alteraTtone();
                 }
@@ -115,6 +117,32 @@ function exibeVencedor(vencedor) {
             }
         })
     }, 500);
+}
+
+function exibeVelha() {
+    setTimeout(() => {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Opa',
+            text: 'Deu velha',
+            textColor: '#fff',
+            showConfirmButton: true,
+            background: '#F0F8FF url(background/alert.png)',
+            backdrop: `
+                rgba(0,0,123,0.4)
+                url("images/wtf.gif")
+                left top
+                no-repeat
+            `,
+            showClass: {
+                popup: 'animated fadeInDown faster'
+            },
+            hideClass: {
+                popup: 'animated fadeOutUp faster'
+            }
+
+        })
+    });
 }
 
 function montaLinha(coluna) {
