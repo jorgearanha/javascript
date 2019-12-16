@@ -41,9 +41,8 @@ function clickTabuleiro(tabuleiro) {
 
                     let vencedor = verificaVencedor(tabuleiro);
                     if (vencedor) {
-                        setTimeout(() => {alert('O vencedor foi: ' + vencedor)}, 500);
-                        return () => { };
-                    }else if (verificaVelha(tabuleiro)) alert('Deu velha');
+                        exibeVencedor(vencedor);
+                    } else if (verificaVelha(tabuleiro)) alert('Deu velha');
                     // Altera o ttone a cada rodada.
                     alteraTtone();
                 }
@@ -81,12 +80,28 @@ function alteraTtone() {
     else ttone = panettone;
 }
 
-function removeEventos(tab, evento) {
-    for (let linha = 0; linha < tab.length; linha++) {
-        for (let coluna = 0; coluna < array.length; coluna++) {
-            tab[linha][coluna].elem.removeEventListener('click', evento);
-        }
-    }
+function exibeVencedor(vencedor){
+    setTimeout(() => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Parabéns!!',
+            text: 'O vencedor foi: ' + vencedor,
+            showConfirmButton: true,
+            showClass: {
+                popup: 'animated fadeInDown faster'
+              },
+              hideClass: {
+                popup: 'animated fadeOutUp faster'
+              }
+          }).then((result) => {
+            if (result.value) {
+                if (vencedor == 'panettonne') 
+                window.open('https://www.lojabauducco.com.br/panettone-frutas-500g-caixa12--59-/p', '_blank');
+                else window.open('https://www.lojabauducco.com.br/chocottone-gotas-500g-caixa--64-/p', '_blank');
+                window.location.reload();
+            }
+          })
+    }, 500);
 }
 
 function montaLinha(coluna) {

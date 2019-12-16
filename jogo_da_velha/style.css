@@ -9,12 +9,19 @@ body {
     height: 100%;
 }
 
+.choco {
+    background: rgba(70, 70, 70, 0.2);
+}
+
+.pane {
+    background: rgba(245, 38, 38, 0.2);
+}
+
 #cabecalho {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darkslategray;
-    opacity: 0.8;
+    background: rgba(70, 70, 70, 0.3);
     width: 100%;
     min-width: 600px;
     height: 200px;
@@ -36,9 +43,10 @@ body {
 }
 
 #container {    
-    min-width: 600px;
-    width: 600px;
-    height: 600px;
+    min-width: 500px;
+    min-height: 500px;
+    width: 500px;
+    height: 500px;
 }
 
 #container {
@@ -57,5 +65,4 @@ body {
     border: 2px solid slategray;
     width: 33.33%;
     height: 100%;
-    opacity: 0.9;
 }
