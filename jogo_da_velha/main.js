@@ -80,27 +80,40 @@ function alteraTtone() {
     else ttone = panettone;
 }
 
-function exibeVencedor(vencedor){
+function exibeVencedor(vencedor) {
     setTimeout(() => {
         Swal.fire({
-            icon: 'success',
+            imageUrl: 'images/' + vencedor + '.png',
+            imageWidth: 200,
+            imageHeight: 200,
             title: 'Parabéns!!',
             text: 'O vencedor foi: ' + vencedor,
+            textColor: '#fff',
             showConfirmButton: true,
+            background: '#F0F8FF url(background/alert.png)',
+            backdrop: `
+                rgba(0,0,123,0.4)
+                url("images/xmas.gif")
+                left top
+                no-repeat
+            `,
             showClass: {
                 popup: 'animated fadeInDown faster'
-              },
-              hideClass: {
+            },
+            hideClass: {
                 popup: 'animated fadeOutUp faster'
-              }
-          }).then((result) => {
-            if (result.value) {
-                if (vencedor == 'panettonne') 
-                window.open('https://www.lojabauducco.com.br/panettone-frutas-500g-caixa12--59-/p', '_blank');
-                else window.open('https://www.lojabauducco.com.br/chocottone-gotas-500g-caixa--64-/p', '_blank');
-                window.location.reload();
             }
-          })
+
+        }).then((result) => {
+            if (result.value) {
+                setTimeout(() => {
+                    if (vencedor == 'panettone')
+                        window.open('https://www.lojabauducco.com.br/panettone-frutas-500g-caixa12--59-/p');
+                    else window.open('https://www.lojabauducco.com.br/chocottone-gotas-500g-caixa--64-/p');
+                    window.location.reload();
+                }, 500);
+            }
+        })
     }, 500);
 }
 
