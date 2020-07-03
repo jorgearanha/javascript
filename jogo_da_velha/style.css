@@ -47,9 +47,6 @@ body {
     min-height: 500px;
     width: 500px;
     height: 500px;
-}
-
-#container {
     border: 5px solid slategray;
     border-radius: 10px;
 }
